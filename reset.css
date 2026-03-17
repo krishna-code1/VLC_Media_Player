@@ -1,0 +1,10 @@
+/* every where use this reset css common for all projects */
+
+*{
+    box-sizing: border-box;
+   
+}
+
+body{
+    margin: 0px;
+}
