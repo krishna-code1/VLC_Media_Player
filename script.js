@@ -18,7 +18,7 @@ const handelInput = (obj)=>{
   videoEle.setAttribute("class","video");
 
   VideoPlayer.appendChild(videoEle);
-  videoEle.controls = true;
+  // videoEle.controls = true;
   
   
 }
@@ -27,7 +27,9 @@ videoInput.addEventListener("click",inputSelector);
 videofile.addEventListener("change",handelInput);
 
 // footer work
-
+/**
+ * video controll play and pause video controllers
+ */
 const playBtn = document.querySelector("#play");
 
 const videoControl = ()=>{
@@ -50,8 +52,13 @@ const videoControl = ()=>{
 
 playBtn.addEventListener("click",videoControl);
 
+/*** 
+ * in this forward and backward 5 sec
+ */
 const forwardBtn = document.querySelector("#forward");
 const backwardBtn = document.querySelector("#backward");
+
+
 
 const forwardVideo = ()=>{
    const videoEle = document.querySelector("main video");
@@ -73,5 +80,14 @@ const backwardVideo = ()=>{
 
  backwardBtn.addEventListener("click",backwardVideo);
 
+ /**volume */
 
+const volumeController = document.querySelector("#volume");
+const changeVolume = function(){
+   const videoEle = document.querySelector("main video");
+    if (videoEle) {
+    videoEle.volume = this.value; //this coonetc with volume silder that range 0 t0 1 that comes in videoele volume
+  }
+}
+volumeController.addEventListener("input",changeVolume)
 

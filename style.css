@@ -109,4 +109,6 @@ footer{
 #icons > *{
   cursor: pointer;
 }
-
+#volume{
+  margin-right: 3rem;
+}
