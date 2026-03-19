@@ -166,6 +166,7 @@ main.addEventListener("click",videoOper);//click on screen play or pause video
 
 const speedUp = document.querySelector("#speedUp");
 const speedDown= document.querySelector("#speedDown");
+const speedNormal = document.querySelector("#speedNormal");
 
 const speedVideo = ()=>{
   const videoEle = document.querySelector("main video");
@@ -180,6 +181,16 @@ const slowVideo = ()=>{
     videoEle.playbackRate = 0.5;
   }
 }
+const NormalSpeed = ()=>{
+   const videoEle = document.querySelector("main video");
+  if(videoEle){
+    videoEle.playbackRate = 1;
+  }
+}
 
 speedUp.addEventListener("click",speedVideo);
 speedDown.addEventListener("click",slowVideo);
+speedNormal.addEventListener("click",NormalSpeed);
+
+
+// npx live-server - run in vs code 
