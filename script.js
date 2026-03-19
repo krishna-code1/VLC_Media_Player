@@ -182,9 +182,11 @@ const slowVideo = ()=>{
   }
 }
 const NormalSpeed = ()=>{
+  console.log("krishna");
    const videoEle = document.querySelector("main video");
   if(videoEle){
     videoEle.playbackRate = 1;
+      console.log("krishna one");
   }
 }
 
