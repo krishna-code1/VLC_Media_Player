@@ -4,11 +4,14 @@ const videofile = document.querySelector("#video-file");
 const VideoPlayer = document.querySelector("#main");
 
 
+
 const inputSelector = ()=>{
       videofile.click();
 }
+
 //inside this currentTime and Duration of video func present and progressbar code
 const handelInput = (obj)=>{
+  
     // console.log("video is selected");
   const selectVideo = obj.target.files[0];//files is array video present at oth idx
   const link = URL.createObjectURL(selectVideo);
@@ -127,7 +130,17 @@ const backwardVideo = ()=>{
 
  forwardBtn.addEventListener("click",forwardVideo);
  backwardBtn.addEventListener("click",backwardVideo);
+/*** full screen option */
+const fullScreen = document.querySelector("#fullScreen");
 
+const watchFullScreen = ()=>{
+  const videoEle = document.querySelector("main video");
+ if (videoEle) {
+    videoEle.requestFullscreen();
+  }
+}
+
+ fullScreen.addEventListener("click", watchFullScreen);
  /**volume */
 
 const volumeController = document.querySelector("#volume");
@@ -182,11 +195,9 @@ const slowVideo = ()=>{
   }
 }
 const NormalSpeed = ()=>{
-  console.log("krishna");
    const videoEle = document.querySelector("main video");
   if(videoEle){
     videoEle.playbackRate = 1;
-      console.log("krishna one");
   }
 }
 

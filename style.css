@@ -76,6 +76,7 @@ header{
 
 }
 
+
 main{
   margin-top: 0px;
   height: calc(100vh - 10rem);
@@ -83,6 +84,11 @@ main{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#img-main{
+  height: 100%;
+
+  
 }
 .video{
  height: 100%;
@@ -131,6 +137,7 @@ footer{
 .duration{
   position: absolute;
   top:10px;
+  margin-left: 3px;
 }
 #video-length{
   height: 40px;
