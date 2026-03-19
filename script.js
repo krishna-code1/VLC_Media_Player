@@ -144,14 +144,13 @@ const watchFullScreen = ()=>{
  /**volume */
 
 const volumeController = document.querySelector("#volume");
-const changeVolume = function() {
-  const videoEle = document.querySelector("main video");
-  if (!videoEle) return;
-
-  const normalized = Number(this.value) / 100;
-  videoEle.volume = Math.min(1, Math.max(0, normalized));
-};
-volumeController.addEventListener("input", changeVolume);
+const changeVolume = function(){
+   const videoEle = document.querySelector("main video");
+    if (videoEle) {
+    videoEle.volume = this.value; //this connect with volume silder that range 0 t0 1 that comes in videoele volume
+  }
+}
+volumeController.addEventListener("input",changeVolume);
 
 /***main operation click to play ans pause video on screen*/
 
