@@ -7,6 +7,7 @@ const VideoPlayer = document.querySelector("#main");
 const inputSelector = ()=>{
       videofile.click();
 }
+//inside this currentTime and Duration of video func present and progressbar code
 const handelInput = (obj)=>{
     // console.log("video is selected");
   const selectVideo = obj.target.files[0];//files is array video present at oth idx
@@ -18,8 +19,59 @@ const handelInput = (obj)=>{
   videoEle.setAttribute("class","video");
 
   VideoPlayer.appendChild(videoEle);
-  // videoEle.controls = true;
+
+ /***video length code start */
+  const videoDuration = document.querySelector("#sp-2");
+  videoEle.addEventListener("loadedmetadata", () => {
+    const duration = videoEle.duration;
+
+    // format time into minuts and seconds
+    const minutes = Math.floor(duration / 60);
+    const seconds = Math.floor(duration % 60);
+    
+    videoDuration.textContent = 
+      `${minutes}:${seconds.toString().padStart(2, "0")}`;
+  });
+  /***video length code end*/
+
+/*** video current time func start */
+const currTime = document.querySelector("#sp-1");
+videoEle.addEventListener("timeupdate", () => {
+ const currVideoTime = videoEle.currentTime;
+   const minutes = Math.floor(currVideoTime / 60);
+   const seconds = Math.floor(currVideoTime % 60);
+ 
+   currTime.textContent = 
+    `${minutes}:${seconds.toString().padStart(2, "0")}`;
   
+});
+/***video cuurtime code end*/
+
+/***  ->>> video progress bar code  -<<<<-----*/
+const progressBar = document.querySelector("#duration");
+
+// initial state
+progressBar.value = 0;
+progressBar.max = 0;
+progressBar.disabled = true;
+
+// progress bar works only if video present
+progressBar.disabled = false;
+
+videoEle.addEventListener("loadedmetadata", () => {
+  progressBar.max = videoEle.duration;
+  progressBar.value = 0;
+});
+
+videoEle.addEventListener("timeupdate", () => {
+  if (!videoEle.duration) return;
+  progressBar.value = videoEle.currentTime;
+});
+// when progresss bar moves video also go that time excat
+progressBar.addEventListener("input", () => {
+  videoEle.currentTime = progressBar.value;
+});
+
   
 }
 
@@ -29,9 +81,9 @@ videofile.addEventListener("change",handelInput);
 // footer work
 /**
  * video controll play and pause video controllers
+ * 
  */
 const playBtn = document.querySelector("#play");
-
 const videoControl = ()=>{
   // console.log("i am cliking");
   const videoEle = document.querySelector("main video");
@@ -49,7 +101,6 @@ const videoControl = ()=>{
   }
 
 }
-
 playBtn.addEventListener("click",videoControl);
 
 /*** 
@@ -57,8 +108,6 @@ playBtn.addEventListener("click",videoControl);
  */
 const forwardBtn = document.querySelector("#forward");
 const backwardBtn = document.querySelector("#backward");
-
-
 
 const forwardVideo = ()=>{
    const videoEle = document.querySelector("main video");
@@ -77,7 +126,6 @@ const backwardVideo = ()=>{
 }
 
  forwardBtn.addEventListener("click",forwardVideo);
-
  backwardBtn.addEventListener("click",backwardVideo);
 
  /**volume */
@@ -86,8 +134,52 @@ const volumeController = document.querySelector("#volume");
 const changeVolume = function(){
    const videoEle = document.querySelector("main video");
     if (videoEle) {
-    videoEle.volume = this.value; //this coonetc with volume silder that range 0 t0 1 that comes in videoele volume
+    videoEle.volume = this.value; //this connect with volume silder that range 0 t0 1 that comes in videoele volume
   }
 }
-volumeController.addEventListener("input",changeVolume)
+volumeController.addEventListener("input",changeVolume);
 
+/***main operation click to play ans pause video on screen*/
+
+const main = document.querySelector("#main");
+const videoOper = ()=>{
+  const videoEle = document.querySelector("main video");
+  const isPlayIcon = playBtn.classList.contains("fa-play");
+  const isPauseIcon = playBtn.classList.contains("fa-pause");
+
+  if (videoEle && isPlayIcon) {
+    videoEle.play();
+    playBtn.classList.remove("fa-play");
+    playBtn.classList.add("fa-pause");
+
+  } else if (videoEle && isPauseIcon) {
+    videoEle.pause();
+    playBtn.classList.remove("fa-pause");
+    playBtn.classList.add("fa-play");
+  }
+
+}
+main.addEventListener("click",videoOper);//click on screen play or pause video
+/** duration of video  */
+
+/***playback rate */
+
+const speedUp = document.querySelector("#speedUp");
+const speedDown= document.querySelector("#speedDown");
+
+const speedVideo = ()=>{
+  const videoEle = document.querySelector("main video");
+  if(videoEle){
+    
+    videoEle.playbackRate = 2;
+  }
+}
+const slowVideo = ()=>{
+  const videoEle = document.querySelector("main video");
+  if(videoEle){
+    videoEle.playbackRate = 0.5;
+  }
+}
+
+speedUp.addEventListener("click",speedVideo);
+speedDown.addEventListener("click",slowVideo);
