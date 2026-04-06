@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VLC Media Player</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
@@ -30,35 +31,38 @@
     <main id="main">
         <img src="./welcome-img.png" alt="vlc-img" id="img-main">
     </main>
-    
+
     <footer id="footer">
-        <div id="icons">
-     <i class="fa-solid fa-play"  id="play"></i>
-     <i class="fa-solid fa-pause"  id="pause"></i>
-     <i class="fa-solid fa-forward" id="forward"></i>
-     <i class="fa-solid fa-backward" id="backward"></i>
-     <i class="fa-solid fa-expand" id="fullScreen"></i>
-     <label for="volume" class="volume">Volume:</label>
-     <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
-
-    <span class="play-spped">PlayBackSpeed: </span>
-     <div class="playbackrate">
-      <span id="speedDown">0.5X</span>
-      <span id="speedNormal">1X</span>
-      <span id="speedUp">2X</span>
-       
-     </div>
-    
-     </div>
-
-     <label for="duration" class="duration">duration:</label>
+         <div class="range">
+    <label for="duration" class="duration">duration:</label>
     <input type="range" id="duration" min="0" max="0" value="0">
      <button id="video-length">
         <span id="sp-1">0.00</span>
         <span id="sp-3">/</span>
         <span id="sp-2">0.00</span>
      </button>
+     </div>
+   
+        <div class="icons">
+     <i class="fa-solid fa-play pointer"  id="play"></i>
+     <i class="fa-solid fa-pause pointer"  id="pause"></i>
+     <i class="fa-solid fa-forward pointer" id="forward"></i>
+     <i class="fa-solid fa-backward pointer" id="backward"></i>
+     <i class="fa-solid fa-expand pointer" id="fullScreen"></i>
+     <label for="volume" class="volume">Volume:</label>
+     <input type="range" id="volume" min="0" max="1" step="0.1" value="1" >
+
     
+     <div class="playbackrate">
+    <span class="play-spped">PlayBackSpeed: </span>
+     <div class="rate">
+    <span id="speedDown">0.5X</span>
+      <span id="speedNormal">1X</span>
+      <span id="speedUp">2X</span>
+     </div>
+    
+     </div>
+     </div>
     
     </footer>
     

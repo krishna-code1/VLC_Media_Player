@@ -5,6 +5,7 @@ html {
   font-family: "Roboto", sans-serif;
 }
 
+
 *, *::before, *::after {
   box-sizing: inherit;
 }
@@ -25,6 +26,7 @@ html {
 
 .title-img {
   height: 60%;
+  min-height: 30px;
   object-fit: contain;
 }
 
@@ -102,88 +104,80 @@ main {
 }
 
 /* ===== FOOTER ===== */
-footer {
-  height: auto;
-  width: 100vw;
-  position: relative;
+#footer{
+  min-height: 70px;
+  min-width: 100px;
+  width: 100%;
 }
-
-#icons {
+.range{
+  height: 40%;
+  width: 100%;
   display: flex;
-  gap: 3rem;
-  position: absolute;
-  top: 4.3rem;
-  left: 2rem;
-  justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
 }
-
-#pause {
+.range * {
+  font-size: 1.5rem;
+}
+#duration{
+  width: 60%;
+  min-width: 100px;
+  cursor: pointer;
+}
+#video-length{
+  border-radius: 30%;
+  
+}
+.icons{
+  margin-top: 1rem;
+  height: 50%;
+  width: 100%;
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+#pause{
   display: none;
 }
-
-#icons > * {
+.icons * {
+  font-size: 1.5rem;
+}
+#volume{
   cursor: pointer;
 }
-
-#volume {
-  margin-right: 3rem;
-}
-
-
-/* ===== DURATION BAR (increased width) ===== */
-#duration {
+.pointer{
   cursor: pointer;
-  position: absolute;
-  width: 70vw;
-  top: 10px;
-  left: 4rem;
 }
-
-.duration {
-  position: absolute;
-  top: 10px;
-  margin-left: 3px;
+.pointer:hover{
+  background-color: antiquewhite;
+  transform: scale(120%);
 }
-
-#video-length {
-  height: 40px;
-  width: 10rem;
-  position: absolute;
-  right: 4rem;
-  /* bottom: 5.5rem; */
-  border-radius: 30%;
-  background-color: transparent;
+.playbackrate{
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
-
-#sp-1 {
-  height: 1.6rem;
-  width: 3.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.rate{
+  margin-left: 0.5rem;
 }
+#speedDown:hover{
+  background-color: antiquewhite;
+  border: 2px solid red;
+   transform: rotate(50deg);
+     cursor: pointer;
 
-#sp-2 {
-  height: 1.6rem;
-  width: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
+#speedNormal:hover{
+  background-color: antiquewhite;
+    border: 2px solid red;
+      cursor: pointer;
 
-#sp-3 {
-  position: absolute;
-  left: 4.4rem;
-  font-size: 1.8rem;
 }
+#speedUp:hover{
+  background-color: antiquewhite;
+    border: 2px solid red;
+      cursor: pointer;
 
-.playbackrate {
-  display: flex;
-  gap: 0.5rem;
 }
