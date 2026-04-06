@@ -161,7 +161,9 @@ main {
 }
 .rate{
   margin-left: 0.5rem;
+  
 }
+
 #speedDown:hover{
   background-color: antiquewhite;
   border: 2px solid red;

@@ -3,8 +3,6 @@ const videoInput = document.querySelector("#video-btn");
 const videofile = document.querySelector("#video-file");
 const VideoPlayer = document.querySelector("#main");
 
-
-
 const inputSelector = ()=>{
       videofile.click();
 }
@@ -81,7 +79,7 @@ progressBar.addEventListener("input", () => {
 videoInput.addEventListener("click",inputSelector);
 videofile.addEventListener("change",handelInput);
 
-// footer work
+// footer work event listeners added 
 /**
  * video controll play and pause video controllers
  * 
@@ -205,5 +203,44 @@ speedUp.addEventListener("click",speedVideo);
 speedDown.addEventListener("click",slowVideo);
 speedNormal.addEventListener("click",NormalSpeed);
 
+// keyboard event listeners  ArrrowRight,Left,Space bar events added like youtube 
+const keybordEvent = function(event){
+  const videoEle = document.querySelector("main video");
+  if (event.code === "Space") {
+      event.preventDefault();
+      
+  const isPlayIcon = playBtn.classList.contains("fa-play");
+  const isPauseIcon = playBtn.classList.contains("fa-pause");
 
-// npx live-server - run in vs code 
+  if (videoEle && isPlayIcon) {
+    videoEle.play();
+    playBtn.classList.remove("fa-play");
+    playBtn.classList.add("fa-pause");
+  } else if (videoEle && isPauseIcon) {
+    videoEle.pause();
+    playBtn.classList.remove("fa-pause");
+    playBtn.classList.add("fa-play");
+  }
+  } 
+ 
+   if(event.code === "ArrowRight"){
+    event.preventDefault();
+    if (videoEle) {
+    videoEle.currentTime += 5;
+  }
+
+  }
+
+ if(event.code === "ArrowLeft"){
+    event.preventDefault()
+    if (videoEle) {
+    videoEle.currentTime -= 5;
+  }
+
+  }
+
+}
+document.addEventListener("keydown",keybordEvent);
+
+
+// npx live-server - run in vs code
